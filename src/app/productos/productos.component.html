@@ -1,0 +1,16 @@
+<div class="list-group mb-3 mx-auto my-3" style="max-width: 35rem;">
+    <a href="#" class="list-group-item list-group-item-action alert-link">Agregar Categoria</a>
+    <div class="my-2" *ngFor="let producto of productos">
+      <a href="#" class="list-group-item list-group-item-action active">
+        {{producto.nombre}}
+        <span class="badge bg-success"> {{producto.id_categoria}}</span>
+      </a>
+      <div *ngFor="let subform of producto.listaProducto">
+        <a [routerLink]="['/productos/form-producto', subform.id_producto]" name="editarProducto" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{subform.nombre}}
+            <span class="badge bg-success">$ {{subform.precio}}</span>
+        </a>     
+        
+      </div>
+      <a [routerLink] = "['/productos/form-producto']" class="list-group-item list-group-item-action list-group-item-dark">Agregar Producto</a>
+    </div>
+  </div>
