@@ -10,7 +10,10 @@ import { ProductoService } from './productos/producto.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormProductoComponent } from './productos/form-producto.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { CategoriaService } from './categorias/categoria.service';
+import { FormComponent } from './categorias/form.component'
 
 const routes: Routes = [
   {path: '', redirectTo: '/catproducto', pathMatch: 'full'},
@@ -18,6 +21,8 @@ const routes: Routes = [
   {path: 'directiva', component: DirectivaComponent},
   {path: 'productos/form-producto', component: FormProductoComponent},
   {path: 'productos/form-producto/:id', component: FormProductoComponent},
+  {path: 'categorias/form', component: FormComponent},
+  {path: 'categorias/form/:id', component: FormComponent},
 ];
 
 @NgModule({
@@ -28,6 +33,8 @@ const routes: Routes = [
     DirectivaComponent,
     ProductosComponent,
     FormProductoComponent,
+    CategoriasComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,10 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductoService],
+  providers: [
+    ProductoService,
+    CategoriaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

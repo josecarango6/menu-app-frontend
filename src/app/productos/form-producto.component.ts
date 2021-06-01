@@ -14,6 +14,9 @@ declare var $: any;
 })
 export class FormProductoComponent implements OnInit {
 
+  products: Product[];
+  
+
   public product: Product = new Product();
   public titulo: string = "Agregar Producto"
 
@@ -23,9 +26,10 @@ export class FormProductoComponent implements OnInit {
     public productoService: ProductoService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
  
     this.cargarProduct();
+
     
   }
 
@@ -74,6 +78,42 @@ export class FormProductoComponent implements OnInit {
       swal.fire('Producto Actualizado', `Producto ${product.nombre} actualizado con éxito!`, 'success')
     }
     )
+  }
+
+    deleteProduct(product: Product): void {
+    const swalWithBootstrapButtons = swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Está Seguro?',
+      text: `¿Seguro que desea eliminar el producto ${product.nombre}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar!',
+      cancelButtonText: 'No, cancelar!',
+      buttonsStyling: true,
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+
+        this.productoService.deleteProduct(product.id_producto).subscribe(
+          response => {
+            this.router.navigate(['/catproducto'])
+            swalWithBootstrapButtons.fire(
+              'Producto Eliminado!',
+              `Producto ${product.nombre} eliminada con éxito.`,
+              'success'
+            )
+          }
+        )
+       
+      } 
+    })
   }
 
 }
