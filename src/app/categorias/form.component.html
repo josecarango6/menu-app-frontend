@@ -8,11 +8,11 @@
       <form class="needs-validation" novalidate>
         <div class="form-group row">
           <div class="col-md-6">
-            <label for="validationCustom01">Nombre de la categoria</label>
+            <label for="validationCustom01">Nombre de la categoría</label>
             <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="categoria.nombre" name="nombre"
               required>
             <div class="invalid-feedback">
-              Por favor complete el campo "Nombre de la categoria"
+              Por favor complete el campo "Nombre de la categoría"
             </div>
           </div>
         </div>
@@ -24,7 +24,8 @@
             <ng-template #elseBlock>
   
               <button class="btn btn-primary btn-sm col-md-3 my-3" role="button" (click)='update()' >Editar</button>
-  
+            
+              <button class="bi bi-trash btn btn-danger  col-md-12" name="eliminar" (click)='delete(categoria)'> Eliminar Categoría</button>
             </ng-template>            
   
           </div>  

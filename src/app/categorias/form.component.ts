@@ -71,4 +71,42 @@ export class FormComponent implements OnInit {
     )
   }
 
+  delete(categoria: Categoria): void {
+    const swalWithBootstrapButtons = swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Está Seguro?',
+      text: `¿Seguro que desea eliminar la categoria ${categoria.nombre}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar!',
+      cancelButtonText: 'No, cancelar!',
+      buttonsStyling: true,
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+
+        this.categoriaService.delete(categoria.id_categoria).subscribe(
+          response => {
+            this.router.navigate(['/catproducto'])
+            swalWithBootstrapButtons.fire(
+              'Categoria Eliminada!',
+              `Categoria ${categoria.nombre} eliminada con éxito.`,
+              'success'
+            )
+          }
+        )
+       
+      } 
+    })
+  }
+
+
+
 }
