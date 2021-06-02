@@ -3,7 +3,7 @@
 
 
   <div class="card-header">{{ titulo }}
-    <button [routerLink]="['/catproducto']" type="button" class="btn btn-warning float-right btn-sm">Regresar</button>
+    <button [routerLink]="['/catproducto']" type="button" class="btn btn-warning float-right btn-sm"> Regresar</button>
 
   </div>
   <div class="card-body">
@@ -41,8 +41,8 @@
 
           <ng-template #elseBlock>
 
-            <button class="btn btn-primary col-md-12 my-4 mx-auto" role="button"
-              (click)='updateProducto()'>Editar</button>
+            <button class="bi bi-pencil-square btn btn-primary col-md-12 my-4 mx-auto" role="button"
+              (click)='updateProducto()'> Editar</button>
             
               <button class="bi bi-trash btn btn-danger  col-md-12" name="eliminarProducto"
                 (click)='deleteProduct(product)'> Eliminar Producto</button>

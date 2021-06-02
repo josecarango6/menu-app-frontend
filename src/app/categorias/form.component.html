@@ -1,4 +1,4 @@
-<div class="card bg-light mx-auto my-3" style="max-width: 50rem;">
+<div class="card bg-light mx-auto my-3" style="max-width: 40rem;">
 
     <div class="card-header">{{ titulo }}
       <button class=" float-right btn btn-warning btn-sm" role="button" [routerLink]="['/catproducto']">Regresar</button>
@@ -15,21 +15,20 @@
               Por favor complete el campo "Nombre de la categoría"
             </div>
           </div>
-        </div>
-  
-        <div class="form-group row">
-          <div class="col-sm-12">
-            <button class="btn btn-primary btn-sm col-md-3 my-3" role="button" (click)='create()' *ngIf="!categoria.id_categoria else elseBlock">Crear</button>
+
+          <div class="col-md-6">
+            <button class="btn btn-primary col-md-12 my-4 mx-auto" role="button" (click)='create()' *ngIf="!categoria.id_categoria else elseBlock">Crear</button>
             
             <ng-template #elseBlock>
   
-              <button class="btn btn-primary btn-sm col-md-3 my-3" role="button" (click)='update()' >Editar</button>
+              <button class="bi bi-pencil-square btn btn-primary col-md-12 my-4 mx-auto" role="button" (click)='update()' > Editar</button>
             
               <button class="bi bi-trash btn btn-danger  col-md-12" name="eliminar" (click)='delete(categoria)'> Eliminar Categoría</button>
-            </ng-template>            
-  
-          </div>  
-        </div> 
+            </ng-template> 
+          </div>
+
+        </div>  
+        
       </form> 
     </div>
   </div>
