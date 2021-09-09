@@ -6,6 +6,8 @@ import { ProductoService} from './producto.service';
 import { Product } from './product';
 import swal from 'sweetalert2';
 import { ReferenceAst } from '@angular/compiler';
+import { AuthService } from '../usuarios/auth.service';
+
 
 
 @Component({
@@ -16,16 +18,19 @@ export class ProductosComponent implements OnInit {
 
   productos: Producto[];
   products: Product[];
+  
 
   public producto: Producto = new Producto()
   public product: Product = new Product()
 
   constructor(
     private productoService: ProductoService,
+    private authService: AuthService,
     public router: Router    
     ) { }
 
   ngOnInit() {
+    
     this.productoService.getProductos().subscribe(
       productos => this.productos = productos
     );

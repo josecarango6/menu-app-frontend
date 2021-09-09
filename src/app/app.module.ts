@@ -13,16 +13,18 @@ import { FormProductoComponent } from './productos/form-producto.component';
 import { FormsModule } from '@angular/forms';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { CategoriaService } from './categorias/categoria.service';
-import { FormComponent } from './categorias/form.component'
+import { FormComponent } from './categorias/form.component';
+import { LoginComponent } from './usuarios/login.component'
 
 const routes: Routes = [
-  {path: '', redirectTo: '/catproducto', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'catproducto', component: ProductosComponent},
   {path: 'directiva', component: DirectivaComponent},
   {path: 'productos/form-producto', component: FormProductoComponent},
   {path: 'productos/form-producto/:id', component: FormProductoComponent},
   {path: 'categorias/form', component: FormComponent},
   {path: 'categorias/form/:id', component: FormComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
@@ -35,6 +37,7 @@ const routes: Routes = [
     FormProductoComponent,
     CategoriasComponent,
     FormComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
