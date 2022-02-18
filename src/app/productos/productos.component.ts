@@ -7,6 +7,7 @@ import { Product } from './product';
 import swal from 'sweetalert2';
 import { ReferenceAst } from '@angular/compiler';
 import { AuthService } from '../usuarios/auth.service';
+import { Categoria } from '../categorias/categoria';
 
 
 
@@ -18,10 +19,12 @@ export class ProductosComponent implements OnInit {
 
   productos: Producto[];
   products: Product[];
+  categorias: Categoria[];
   
 
   public producto: Producto = new Producto()
   public product: Product = new Product()
+  public categoria: Categoria = new Categoria()
 
   constructor(
     private productoService: ProductoService,

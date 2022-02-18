@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Producto } from './producto';
+import { Categoria } from '../categorias/categoria';
 import { Product } from './product';
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -17,6 +18,8 @@ export class ProductoService {
 private urlEndPoint:string = URL_BACKEND + '/api/catproducto';
 //por el urlEndPoint2 se consulta los productos sin la categoria = product
 private urlEndPoint2:string = URL_BACKEND + '/api/productos';
+
+private urlEndPoint3:string = 'https://spring-boot-menu-app.herokuapp.com/api/categorias';
 
 private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
   
@@ -49,6 +52,16 @@ private agregarAuthorizationHeader(){
     return this.http.get<Producto[]>(this.urlEndPoint, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
         this.isNoAutorizado(e);
+        return throwError(e);
+      })
+    );
+  }
+
+  getCategorias(): Observable<Categoria[]> {
+    //return of(CATEGORIAS);
+    return this.http.get<Categoria[]>(this.urlEndPoint, {headers: this.agregarAuthorizationHeader()}).pipe(
+      catchError(e => {
+        this.isNoAutorizado(e)
         return throwError(e);
       })
     );

@@ -1,0 +1,11 @@
+img {
+    max-width: 90%;   
+    transition: transform .3s; /* Animation */
+    margin: 0 auto;
+}
+
+img:hover {
+    transform: scale(1.15); 
+    cursor: pointer;
+}
+

@@ -28,8 +28,14 @@
         </div>
         <div class="col-md-6">
           <label for="categoriaProducto">Categoria</label>
-          <input type="number" class="form-control" id="categoriaProducto" [(ngModel)]="product.fkIdCategoria"
-            name="categoria" required>
+          <!-- <input type="number" class="form-control" id="categoriaProducto" [(ngModel)]="product.fkIdCategoria"
+            name="categoria" required> -->
+          <select class="form-select" id="categoriaProducto" [(ngModel)]="product.fkIdCategoria" name="categoriaProducto" required
+            #nacionalidad="ngModel">
+            <option disabled selected>Seleccione</option>
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria.id_categoria">{{categoria.nombre}}
+            </option>
+          </select>
           <div class="invalid-feedback">
             Por favor complete el campo Categoría
           </div>
@@ -43,16 +49,16 @@
 
             <button class="bi bi-pencil-square btn btn-primary col-md-12 my-4 mx-auto" role="button"
               (click)='updateProducto()'> Editar</button>
-            
-              <button class="bi bi-trash btn btn-danger  col-md-12" name="eliminarProducto"
-                (click)='deleteProduct(product)'> Eliminar Producto</button>
-          
+
+            <button class="bi bi-trash btn btn-danger  col-md-12" name="eliminarProducto"
+              (click)='deleteProduct(product)'> Eliminar Producto</button>
+
           </ng-template>
 
         </div>
       </div>
 
-  
+
     </form>
 
   </div>
